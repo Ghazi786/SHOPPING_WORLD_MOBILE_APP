@@ -29,12 +29,21 @@ export default class App extends Component {
       }
     });
   }
+  onItemDeletedHandler = (key) => {
+    this.setState((prevState) => {
+      return {
+        places: prevState.places.filter(place => {
+          return place.key !== key;
+        })
+      }
+    })
+  }
   render() {
     return (
 
       <View style={style.container} >
         <PlaceInput onAddInput={this.placeSumbit} ></PlaceInput>
-        <PlaceList places={this.state.places}></PlaceList>
+        <PlaceList onItemDeleted={this.onItemDeletedHandler} places={this.state.places}></PlaceList>
       </View>
 
     );
