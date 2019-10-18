@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { View, TextInput, Button } from 'react-native';
 class PlaceInput extends Component {
     state = {
-        placeName: 'Ghazi'
+        placeName: 'GhaziSir'
     }
     placeInputHandler = (input) => {
         this.setState({ placeName: input })
