@@ -1,80 +1,29 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow
- */
-import PlaceList from './src/components/placelist';
-import PlaceInput from './src/components/textInput';
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import  {addPlace} from './src/store/actions/index';
-import {deletePlace} from './src/store/actions/index';
-import {
-  StyleSheet,
-  View,
-} from 'react-native';
-class App extends Component {
-  // state = {
-  //   places: []
-  // }
-
-  placeSumbit = (place) => {
-    // this.setState(prevState => {
-    //   console.log('prevState :', prevState);
-    //   return {
-    //     places: prevState.places.concat({ value: place, key: Math.random() })
-    //   }
-    // });
-    this.props.onAddPlace(place);
+import { View, TextInput, Text, StyleSheet } from 'react-native';
+import { createAppContainer } from 'react-navigation';
+import { createStackNavigator } from 'react-navigation-stack';
+import PlaceInput from './src/components/textInput';
+const style = StyleSheet.create({
+  h1: {
+    textAlign: "center",
+    color: "red"
   }
-  onItemDeletedHandler = (key) => {
-    // this.setState((prevState) => {
-    //   return {
-    //     places: prevState.places.filter(place => {
-    //       return place.key !== key;
-    //     })
-    //   }
-    // })
-    this.props.onDeletePlace(key);
-  }
+})
+class HomeScreen extends Component {
   render() {
     return (
-      <View style={style.container} >
-        <PlaceInput onAddInput={this.placeSumbit} ></PlaceInput>
-        <PlaceList onItemDeleted={this.onItemDeletedHandler} places={this.props.places}></PlaceList>
+      <View>
+        <Text>{"Home Screen India"}</Text>
       </View>
+
     );
   }
 }
 
-const style = StyleSheet.create({
-  container: {
-    paddingLeft: 20,
-    paddingTop: 50,
-    paddingRight: 20,
-    backgroundColor: '#FCFCFC',
-    flex: 1,
-    position: 'relative'
+const AppNavigator = createStackNavigator({
+  Home: {
+    screen: HomeScreen,
   },
-  customize: {
-    backgroundColor: 'green'
-  }
-})
+});
 
-const mapStateToProps = state => {
-  return {
-    places: state.places.places
-  }
-}
-const mapDispatchToProps = dispatch => {
-  return {
-    onAddPlace: placeName => dispatch(addPlace(placeName)),
-    onDeletePlace: key => dispatch(deletePlace(key))
-  };
-}
-
-
-// export default App
-export default connect(mapStateToProps,mapDispatchToProps)(App);
+export default createAppContainer(AppNavigator);
