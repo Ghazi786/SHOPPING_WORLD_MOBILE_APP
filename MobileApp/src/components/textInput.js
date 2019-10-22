@@ -5,6 +5,7 @@ class PlaceInput extends Component {
         placeName: 'GhaziSir'
     }
     placeInputHandler = (input) => {
+        console.log('object :');
         this.setState({ placeName: input })
     }
     onAdd = () => {

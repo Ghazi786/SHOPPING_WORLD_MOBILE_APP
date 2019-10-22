@@ -1,7 +1,7 @@
 import React from 'react';
 import { FlatList } from 'react-native'
 import Item from './item'
-const placeList = (props) => {
+const PlaceList = (props) => {
     // const placeListItem = props.places.map((ele, index) => {
     //   return  <Item placeName={ele} key={index} ></Item>
     // })
@@ -11,4 +11,4 @@ const placeList = (props) => {
         }} ></FlatList>
     );
 }
-export default placeList;
+export default PlaceList;

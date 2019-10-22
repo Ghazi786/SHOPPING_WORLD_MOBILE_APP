@@ -1,29 +1,17 @@
 import React, { Component } from 'react';
-import { View, TextInput, Text, StyleSheet } from 'react-native';
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
-import PlaceInput from './src/components/textInput';
-const style = StyleSheet.create({
-  h1: {
-    textAlign: "center",
-    color: "red"
-  }
+import PlaceScreen from './src/screen/home';
+
+let RootStack=createStackNavigator({
+  screen:PlaceScreen
 })
-class HomeScreen extends Component {
+let Navigation = createAppContainer(RootStack);
+export default class App extends Component {
   render() {
     return (
-      <View>
-        <Text>{"Home Screen India"}</Text>
-      </View>
-
+      <Navigation/>
     );
   }
 }
 
-const AppNavigator = createStackNavigator({
-  Home: {
-    screen: HomeScreen,
-  },
-});
-
-export default createAppContainer(AppNavigator);

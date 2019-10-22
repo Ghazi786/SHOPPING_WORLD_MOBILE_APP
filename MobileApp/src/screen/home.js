@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import { View, TextInput, Text, StyleSheet } from 'react-native';
-import { createAppContainer } from 'react-navigation';
-import { createStackNavigator } from 'react-navigation-stack';
+import { View,StyleSheet } from 'react-native';
+import { connect } from 'react-redux';
 import PlaceInput from '../components/textInput';
-import placeList from '../components/placelist';
+import PlaceList from '../components/placelist';
+import  {addPlace} from '../../src/store/actions/index';
+import {deletePlace} from '../../src/store/actions/index';
 const style = StyleSheet.create({
   container: {
     paddingLeft: 20,
@@ -22,23 +23,10 @@ class HomeScreen extends Component {
   static navigationOptions = {
     title: 'Counter!',
   };
-   onItemDeletedHandler = (key) => {
-    // this.setState((prevState) => {
-    //   return {
-    //     places: prevState.places.filter(place => {
-    //       return place.key !== key;
-    //     })
-    //   }
-    // })
+    onItemDeletedHandler = (key) => {
     this.props.onDeletePlace(key);
   }
    placeSumbit = (place) => {
-    // this.setState(prevState => {
-    //   console.log('prevState :', prevState);
-    //   return {
-    //     places: prevState.places.concat({ value: place, key: Math.random() })
-    //   }
-    // });
     this.props.onAddPlace(place);
   }
   
@@ -46,8 +34,8 @@ class HomeScreen extends Component {
   render() {
     return (
       <View  style={style.container}>
-        <PlaceInput onAddInput={this.placeSubmit}></PlaceInput>
-        <placeList onItemDeleted={this.onItemDeletedHandler}></placeList>
+        <PlaceInput onAddInput = {this.placeSumbit} ></PlaceInput>
+        <PlaceList onItemDeleted={this.onItemDeletedHandler} places={this.props.places}></PlaceList>
       </View>
 
     );
@@ -64,5 +52,5 @@ const mapDispatchToProps = dispatch => {
     onDeletePlace: key => dispatch(deletePlace(key))
   };
 }
-let placeScreen= connect(mapStateToProps,mapDispatchToProps)(HomeScreen);
-export default placeScreen;
+let PlaceScreen= connect(mapStateToProps,mapDispatchToProps)(HomeScreen);
+export default PlaceScreen;
