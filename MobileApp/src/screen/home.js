@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View,StyleSheet } from 'react-native';
+import { View,StyleSheet,Button } from 'react-native';
 import { connect } from 'react-redux';
 import PlaceInput from '../components/textInput';
 import PlaceList from '../components/placelist';
@@ -36,6 +36,7 @@ class HomeScreen extends Component {
       <View  style={style.container}>
         <PlaceInput onAddInput = {this.placeSumbit} ></PlaceInput>
         <PlaceList onItemDeleted={this.onItemDeletedHandler} places={this.props.places}></PlaceList>
+        <Button title="Next" onPress={()=>{this.props.navigation.navigate('DetailsScreen')}} />
       </View>
 
     );
