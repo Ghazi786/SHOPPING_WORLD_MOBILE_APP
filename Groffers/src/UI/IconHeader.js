@@ -29,7 +29,7 @@ class IconHeader extends Component {
                     </View>
                 </View>
                 <View style={style.rowFlex} >
-                    <Button buttonStyle={style.catButton} title="Categories" onPress={()=>{this.props.navigation.navigate('welcome')}} ></Button>
+                    <Button buttonStyle={style.catButton} title="Categories" onPress={()=>{this.props.navigation.navigate('Welcome')}} ></Button>
                     <TextInput style={style.textInput} placeholder="Search for Products.."></TextInput>
                 </View>
                 

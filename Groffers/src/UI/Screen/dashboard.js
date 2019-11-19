@@ -16,7 +16,7 @@ import image6 from '../../assets/image/electronics.jpg';
 import image7 from '../../assets/image/sport.jpg';
 import image8 from '../../assets/image/toybaby.jpg';
 class Dashboard extends Component {
-   
+  // static navigationOptions = { headerMode: 'none' }
       state = {
         menu: [
           {
